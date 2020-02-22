@@ -9,7 +9,9 @@ router.get('/', async (req, res) => {
         res.send(comments);
     } else {
         const comments = await mysqlDb.getConnection().query('SELECT * FROM `comments` WHERE `post_id`= ?', req.query.news_id);
-        console.log(comments);
+        if (comments.length === 0) {
+            res.send({message: "Post doesnt exist or no comments"})
+        }
         if (!comments) {
             return res.status(400).send({message: 'Not found'})
         } else {
