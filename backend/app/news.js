@@ -41,7 +41,7 @@ router.post('/', upload.single('image'), async (req, res) => {
     if (req.file) {
         post.image = req.file.filename;
     }
-    
+
     post.date = new Date();
 
     const result = await mysqlDb.getConnection().query('INSERT INTO `news` (`title`, `text`, `image`, `date`) VALUES ' +
