@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 import {fetchSinglePost} from "../../store/actions/newsActions";
 import {connect} from "react-redux";
 import './Post.css';
-import {fetchComments} from "../../store/actions/commentsActions";
+import {deleteComment, fetchComments, postComment} from "../../store/actions/commentsActions";
 import CommentCard from "../../components/CommentCard/CommentCard";
 import {Button, Form, FormGroup, Input, Label} from "reactstrap";
 
@@ -18,6 +18,11 @@ class Post extends Component {
         this.props.getComments(this.props.match.params.id);
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps !== this.props) {
+            this.props.getComments(this.props.match.params.id);
+        }
+    }
 
     submitFormHandler = async event => {
         event.preventDefault();
@@ -25,9 +30,8 @@ class Post extends Component {
         const comment = {
             author: this.state.author,
             message: this.state.message
-
         };
-        // await this.props.addComment(comment);
+        await this.props.postComment(comment);
         this.setState({author: '', message: ''});
     };
 
@@ -36,7 +40,6 @@ class Post extends Component {
             [event.target.name]: event.target.value
         });
     };
-
 
     render() {
         let post = null;
@@ -48,6 +51,7 @@ class Post extends Component {
                     key={comment.id}
                     author={comment.author}
                     message={comment.message}
+                    remove={() => this.props.deleteComment(comment.id)}
                 />
             ));
         } else {
@@ -82,7 +86,7 @@ class Post extends Component {
                                        value={this.state.message}
                                        onChange={this.inputChangeHandler}/>
                             </FormGroup>
-                            <Button>Add</Button>
+                            <Button style={{margin: '10px 0'}}>Add</Button>
                         </Form>
                     </div>
                 </Fragment>
@@ -109,6 +113,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     getPost: id => dispatch(fetchSinglePost(id)),
     getComments: (id) => dispatch(fetchComments(id)),
+    postComment: comment => dispatch(postComment(comment)),
+    deleteComment: (id) => dispatch(deleteComment(id))
 });
 
 
