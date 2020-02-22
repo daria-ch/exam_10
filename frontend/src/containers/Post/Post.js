@@ -66,7 +66,7 @@ class Post extends Component {
                         <h3>Comments</h3>
                         {comments}
                     </div>
-                    <div>
+                    <div className='comment-form'>
                         <h3>Add Comment</h3>
                         <Form onSubmit={this.submitFormHandler}>
                             <FormGroup style={{marginBottom: 0}}>
@@ -103,13 +103,12 @@ class Post extends Component {
 
 const mapStateToProps = state => ({
     post: state.news.post,
-    comments: state.comments.comments,
-    error: state.comments.error
+    comments: state.comments.comments
 });
 
 const mapDispatchToProps = dispatch => ({
     getPost: id => dispatch(fetchSinglePost(id)),
-    getComments: (id) => dispatch(fetchComments(id))
+    getComments: (id) => dispatch(fetchComments(id)),
 });
 
 

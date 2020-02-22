@@ -32,4 +32,11 @@
     right: 5px;
     background: transparent;
     border: none;
+    color: blue;
+}
+
+.post-card-button:hover {
+    background: transparent;
+    color: blue;
+    text-decoration: underline;
 }

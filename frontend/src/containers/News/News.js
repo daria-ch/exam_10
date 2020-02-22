@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import {fetchNews} from "../../store/actions/newsActions";
+import {deletePost, fetchNews} from "../../store/actions/newsActions";
 import {connect} from "react-redux";
 import {Button} from "reactstrap";
 import {Link} from "react-router-dom";
@@ -57,6 +57,7 @@ class News extends Component {
                                 title={post.title}
                                 datetime={datetime}
                                 link={post.id}
+                                delete={() => this.props.deletePost(post.id)}
                             />
                         )
                     }
@@ -71,7 +72,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    getNews: () => dispatch(fetchNews())
+    getNews: () => dispatch(fetchNews()),
+    deletePost: (id) => dispatch(deletePost(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(News);

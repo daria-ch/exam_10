@@ -2,6 +2,7 @@ import React from 'react';
 import './PostCard.css';
 import PostThumbnail from "../PostThumbnail.js/PostThumbnail";
 import {Link} from "react-router-dom";
+import {Button} from "reactstrap";
 
 const PostCard = props => {
     return (
@@ -15,10 +16,9 @@ const PostCard = props => {
                         Read full post >>
                     </Link>
                 </div>
-
-                <Link className='post-card-button' to={"/news/"}>
+                <Button className='post-card-button' onClick={props.delete}>
                     Delete
-                </Link>
+                </Button>
             </div>
         </div>
     );
