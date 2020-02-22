@@ -12,6 +12,12 @@ class News extends Component {
         this.props.getNews();
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps !== this.props) {
+            this.props.getNews();
+        }
+    }
+
     render() {
         return (
             <Fragment>
@@ -23,8 +29,7 @@ class News extends Component {
                     >Add new post
                     </Button>
                 </div>
-                {this.props.news.map(post => {
-                        console.log(post.image);
+                {this.props.news.reverse().map(post => {
                         let datetime = new Date(post.date);
                         let hours = datetime.getUTCHours();
                         let minutes = datetime.getUTCMinutes();
