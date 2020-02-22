@@ -59,7 +59,7 @@ class Post extends Component {
                 <Fragment>
                     <div className='full-post'>
                         <h1>{this.props.post.title}</h1>
-                        <span>{this.props.post.datetime}</span>
+                        <span>{this.props.post.date}</span>
                         <p>{this.props.post.text}</p>
                     </div>
                     <div>
