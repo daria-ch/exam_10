@@ -1,0 +1,11 @@
+.full-post {
+    margin: 15px 0;
+}
+
+.full-post span {
+    color: gray;
+}
+
+.full-post p {
+    margin-top: 10px;
+}

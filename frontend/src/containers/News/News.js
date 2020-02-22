@@ -74,5 +74,4 @@ const mapDispatchToProps = dispatch => ({
     getNews: () => dispatch(fetchNews())
 });
 
-
 export default connect(mapStateToProps, mapDispatchToProps)(News);

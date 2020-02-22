@@ -4,6 +4,7 @@ import {Route, Switch} from "react-router-dom";
 import Toolbar from "./components/UI/Toolbar/Toolbar";
 import News from "./containers/News/News";
 import NewPost from "./containers/NewPost/NewPost";
+import Post from "./containers/Post/Post";
 
 class App extends Component {
     render() {
@@ -16,6 +17,7 @@ class App extends Component {
                     <Switch>
                         <Route path="/" exact component={News}/>
                         <Route path="/news/post" component={NewPost}/>
+                        <Route path="/news/:id" component={Post}/>
                         <Route render={() => <h1>Not found</h1>}/>
                     </Switch>
                 </Container>
