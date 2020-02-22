@@ -22,7 +22,7 @@ export const fetchComments = id => {
     }
 };
 
-export const postComment = comment => {
+export const postComment = (comment) => {
     return async dispatch => {
         await axiosApi.post('/comments', comment);
         dispatch(postCommentSuccess());
