@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.static('public'));
 
 app.use('/news', news);
-app.use('/comments', comments);
+// app.use('/comments', comments);
 
 const run = async () => {
 
