@@ -1,6 +1,5 @@
 import React from 'react';
-import imageNotAvailable from '../../assets/images/default-image.jpg'
-import axiosApi from "../../axios-api";
+import imageNotAvailable from '../../assets/images/default-image.jpg';
 
 const styles = {
     width: '100px',
@@ -11,11 +10,11 @@ const styles = {
 const PostThumbnail = props => {
     let image = imageNotAvailable;
 
-    if (props.img) {
-        image = axiosApi + '/uploads/' + props.img;
+    if (props.image) {
+        image = 'http://localhost:8000/uploads/' + props.image;
     }
 
-    return <img alt="thumbnail" src={image} style={styles} className="img-thumbnail"/>;
+    return <img alt="product" src={image} style={styles} className="img-thumbnail"/>;
 };
 
 export default PostThumbnail;

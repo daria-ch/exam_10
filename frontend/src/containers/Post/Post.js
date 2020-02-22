@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import './Post.css';
 import {deleteComment, fetchComments, postComment} from "../../store/actions/commentsActions";
 import CommentCard from "../../components/CommentCard/CommentCard";
-import {Button, Col, Form, FormGroup, Input, Label} from "reactstrap";
+import {Button, Form, FormGroup, Input, Label} from "reactstrap";
 
 class Post extends Component {
 
